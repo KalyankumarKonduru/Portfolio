@@ -98,7 +98,7 @@ function Contact() {
           my best to get back to you!
         </Description>
         <StyledButton
-          href="mailto:konduru.kalyan555@gmail.com"
+          href="mailto:kondk01@pfw.edu"
           variant="outlined"
           size="large"
         >

@@ -49,7 +49,7 @@ function Footer() {
       <Container>
         <SocialLinks>
           <StyledIconButton
-            href="https://github.com/kalyankumarraju5"
+            href="https://github.com/KalyankumarKonduru"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
@@ -78,7 +78,7 @@ function Footer() {
           <Copyright>
             Designed & Built by{' '}
             <a
-              href="https://github.com/yourusername"
+              href="https://github.com/KalyankumarKonduru"
               target="_blank"
               rel="noopener noreferrer"
             >
