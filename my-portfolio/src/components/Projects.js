@@ -176,16 +176,24 @@ const projects = [
     description:
       'A web application that connects users with domain experts through surveys. Features include engaging user interfaces that enhance data accuracy and comprehensive testing protocols documented in Jira to accelerate issue resolution.',
     tech: ['Python', 'NoSQL', 'HTML', 'CSS', 'Express'],
-    github: 'https://github.com/kalyankumarraju5/kalyan',
+    github: 'https://github.com/KalyankumarKonduru/SurveyMatrics',
     external: 'https://project-one.com',
   },
   {
     title: 'Event Vault',
     description:
       'A web application that streamlines event management by offering scalable event planning and booking solutions. Features include secure user authentication with role-based access control and a responsive, cross-platform design.',
-    tech: ['Java', 'React', 'TypeScript', 'Spring Boot', 'PostgreSQL'],
-    github: 'https://github.com/kalyankumarraju5/EventVault',
+    tech: ['React', 'Node.js', 'Express', 'MongoDB'],
+    github: 'https://github.com/KalyankumarKonduru/EventManagement',
     external: 'https://project-two.com',
+  },
+  {
+    title: 'Portfolio',
+    description:
+      'Designed a sophisticated web application that highlights my software development skills, featuring responsive design, secure user authentication, and dynamic content management, optimized for SEO and cross-platform compatibility.',
+    tech: ['React', 'Next.js', 'Figma', 'Material-UI'],
+    github: 'https://github.com/KalyankumarKonduru/Portfolio',
+    external: 'https://kalyankumarkonduru.vercel.app/',
   },
 ];
 
@@ -206,7 +214,7 @@ function Projects() {
     <StyledSection ref={ref} id="work">
       <Container>
         <Box mb={6}>
-          <SectionTitle variant="h2">Some Things I've Built</SectionTitle>
+          <SectionTitle variant="h2">My Development Portfolio</SectionTitle>
         </Box>
 
         <Grid container spacing={7}>
