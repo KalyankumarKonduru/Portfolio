@@ -97,7 +97,16 @@ const Navbar = () => {
       <StyledAppBar scrolled={scrolled} position="fixed">
         <Toolbar sx={{ justifyContent: 'space-between' }}>
           <Box component="a" href="/" sx={{ display: 'flex', alignItems: 'center' }}>
-            <img src="/images/bitmoji.jpg" alt="Logo" style={{ height: '42px' }} />
+                      <img
+              src="/images/kkk.jpeg"
+              alt="Logo"
+              style={{
+                height: '42px',
+                width: '42px',
+                borderRadius: '50%',
+                objectFit: 'cover',
+              }}
+            />
           </Box>
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignItems: 'center' }}>

@@ -173,7 +173,7 @@ export default function Hero() {
       <GlobalStyle />
       <HeroSection>
         {/* Bitmoji image from public folder */}
-        <Bitmoji src="/images/bitmoji.jpg" style={bitmojiSpring} alt="Bitmoji" />
+        <Bitmoji src="/images/kkk.jpeg" style={bitmojiSpring} alt="Kalyan" />
         {/* Wrap the typed text in an inline-flex container */}
         <TypedWrapper>
           <span
