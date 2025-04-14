@@ -150,35 +150,47 @@ const CategorySection = styled(Box)`
   }
 `;
 
-const languagesAndDatabases = [
+const programming = [
+  { iconClass: 'fas fa-code', name: 'C/C++' },
+  { iconClass: 'fab fa-java', name: 'Java' },
   { iconClass: 'fab fa-js', name: 'JavaScript' },
+  { iconClass: 'fas fa-layer-group', name: 'TypeScript' },
   { iconClass: 'fab fa-python', name: 'Python' },
   { iconClass: 'fab fa-html5', name: 'HTML' },
   { iconClass: 'fab fa-css3-alt', name: 'CSS' },
-  { iconClass: 'fas fa-terminal', name: 'C++' },
+  { iconClass: 'fab fa-angular', name: 'Angular' },
+  { iconClass: 'fab fa-react', name: 'React.js' },
+  { iconClass: 'fab fa-node-js', name: 'Node.js' },
+  { iconClass: 'fas fa-forward', name: 'Next.js' },
+  { iconClass: 'fab fa-figma', name: 'Figma' },
+  { iconClass: 'fas fa-icons', name: 'UI Design' },
+];
+
+const databases = [
   { iconClass: 'fas fa-database', name: 'MySQL' },
   { iconClass: 'fas fa-server', name: 'PostgreSQL' },
   { iconClass: 'fas fa-leaf', name: 'MongoDB' },
+  { iconClass: 'fas fa-database', name: 'NoSQL' },
+  { iconClass: 'fas fa-project-diagram', name: 'JIRA' },
+  { iconClass: 'fas fa-book', name: 'Confluence' },
+  { iconClass: 'fas fa-chart-bar', name: 'Power BI' },
 ];
 
-const frameworksAndLibraries = [
-  { iconClass: 'fab fa-react', name: 'React' },
-  { iconClass: 'fas fa-forward', name: 'Next.js' },
-  { iconClass: 'fab fa-node-js', name: 'Node.js' },
-  { iconClass: 'fas fa-server', name: 'Express' },
-  { iconClass: 'fas fa-palette', name: 'Material UI' },
-  { iconClass: 'fas fa-vial', name: 'Cypress' },
-  { iconClass: 'fab fa-angular', name: 'Angular' },
-];
-
-const toolsAndTech = [
-  { iconClass: 'fab fa-git-alt', name: 'Git' },
-  { iconClass: 'fab fa-docker', name: 'Docker' },
+const frameworks = [
+  { iconClass: 'fab fa-cloud', name: 'Spring Boot' },
+  { iconClass: 'fas fa-archive', name: 'Apache Maven' },
   { iconClass: 'fab fa-aws', name: 'AWS' },
-  { iconClass: 'fab fa-windows', name: 'Windows' },
-  { iconClass: 'fab fa-figma', name: 'Figma' },
-  { iconClass: 'fas fa-code-branch', name: 'VS Code' },
-  { iconClass: 'fas fa-file-word', name: 'Office' },
+  { iconClass: 'fas fa-cloud', name: 'Azure' },
+  { iconClass: 'fas fa-users-cog', name: 'Agile' },
+  { iconClass: 'fas fa-sync', name: 'CI/CD' },
+  { iconClass: 'fab fa-docker', name: 'Docker' },
+  { iconClass: 'fab fa-git-alt', name: 'Git' },
+  { iconClass: 'fas fa-brain', name: 'YOLOv8' },
+  { iconClass: 'fas fa-project-diagram', name: 'TensorFlow' },
+  { iconClass: 'fas fa-robot', name: 'Ultralytics' },
+  { iconClass: 'fas fa-chart-line', name: 'Matplotlib' },
+  { iconClass: 'fas fa-square-root-alt', name: 'NumPy' }
+
 ];
 
 function Skills() {
@@ -209,18 +221,18 @@ function Skills() {
         <MainTitle variant="h2">Tech Stack</MainTitle>
         
         <CategorySection>
-          <CategoryTitle variant="subtitle2">Languages & Databases</CategoryTitle>
-          {renderSkillRow(languagesAndDatabases, 'left')}
+          <CategoryTitle variant="subtitle2">Programming & Web Development</CategoryTitle>
+          {renderSkillRow(programming, 'left')}
         </CategorySection>
 
         <CategorySection>
-          <CategoryTitle variant="subtitle2">Frameworks & Libraries</CategoryTitle>
-          {renderSkillRow(frameworksAndLibraries, 'right')}
+          <CategoryTitle variant="subtitle2">Databases & Tools</CategoryTitle>
+          {renderSkillRow(databases, 'right')}
         </CategorySection>
 
         <CategorySection>
-          <CategoryTitle variant="subtitle2">Tools & Technologies</CategoryTitle>
-          {renderSkillRow(toolsAndTech, 'left')}
+          <CategoryTitle variant="subtitle2">Frameworks, Cloud & Methodologies</CategoryTitle>
+          {renderSkillRow(frameworks, 'left')}
         </CategorySection>
       </Container>
     </StyledSection>

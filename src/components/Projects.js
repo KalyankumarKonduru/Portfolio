@@ -172,28 +172,44 @@ function ProjectThree({ style }) {
 // Example Projects
 const projects = [
   {
-    title: 'Survey Metrics',
+    title: 'Orama',
     description:
-      'A web application that connects users with domain experts through surveys. Features include engaging user interfaces that enhance data accuracy and comprehensive testing protocols documented in Jira to accelerate issue resolution.',
-    tech: ['Python', 'NoSQL', 'HTML', 'CSS', 'Express'],
-    github: 'https://github.com/KalyankumarKonduru/SurveyMatrics',
-    external: 'https://project-one.com',
+      'ORAMA is an AI-powered object detection and risk assessment system designed for low-visibility driving conditions like fog and rain, leveraging YOLOv8 and adaptive preprocessing to enhance safety. It delivers real-time visual alerts and collision risk analysis, targeting future SaaS deployment for autonomous vehicles.',
+    tech: ['Python', 'Tensorflow', 'Jupyter', 'Yolov8', 'numpy'],
+    github: 'https://github.com/KalyankumarKonduru/Orama.git',
+    external: 'https://github.com/KalyankumarKonduru/Orama.git',
   },
   {
-    title: 'Event Vault',
+    title: 'Twarita',
     description:
-      'A web application that streamlines event management by offering scalable event planning and booking solutions. Features include secure user authentication with role-based access control and a responsive, cross-platform design.',
+      'TWARITA is an AI-powered vehicle safety system that combines object detection with real-time collision risk assessment and adaptive decision-making, using sensor data and advanced AI models to predict threats and trigger smart alerts or responses like automatic braking.',
+    tech: ['Python', 'Yolov8', 'TensorFlow', 'Ultralytics', 'Matplotlib'],
+    github: 'https://github.com/KalyankumarKonduru/twarita.git',
+    external: 'https://github.com/KalyankumarKonduru/twarita.git',
+  },
+  {
+    title: 'ApparelAI',
+    description:
+      'A machine learning model that synthesizes realistic clothing images using Conditional GAN, targeting enhancements in fashion marketing with customizable backgrounds. It leverages Style GAN and cGANs, integrating datasets like Deep Fashion and Fashion-MNIST for high-realism in apparel-to-background synthesis.',
+    tech: ['Conditional GAN', 'StyleGAN', 'Python', 'Tensorflow', 'Jupyter'],
+    github: 'https://github.com/KalyankumarKonduru/ApparelAI.git',
+    external: 'https://github.com/KalyankumarKonduru/ApparelAI.git',
+  },
+  {
+    title: 'Sentoro',
+    description:
+      'A full stack application that connects users with domain experts through surveys. Features include engaging user interfaces that enhance data accuracy and comprehensive testing protocols documented in Jira to accelerate issue resolution.',
+    tech: ['Python', 'NoSQL', 'HTML', 'CSS'],
+    github: 'https://github.com/KalyankumarKonduru/Sentoro.git',
+    external: 'https://github.com/KalyankumarKonduru/Sentoro.git',
+  },
+  {
+    title: 'Alivio',
+    description:
+      'A full stack application that streamlines event management by offering scalable event planning and booking solutions. Features include secure user authentication with role-based access control and a responsive, cross-platform design.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/KalyankumarKonduru/EventManagement',
-    external: 'https://project-two.com',
-  },
-  {
-    title: 'Portfolio',
-    description:
-      'Designed a sophisticated web application that highlights my software development skills, featuring responsive design, secure user authentication, and dynamic content management, optimized for SEO and cross-platform compatibility.',
-    tech: ['React', 'Next.js', 'Figma', 'Material-UI'],
-    github: 'https://github.com/KalyankumarKonduru/Portfolio',
-    external: 'https://kalyankumarkonduru.vercel.app/',
+    github: 'https://github.com/KalyankumarKonduru/Alivio.git',
+    external: 'https://alivio.onrender.com/',
   },
 ];
 
@@ -214,7 +230,7 @@ function Projects() {
     <StyledSection ref={ref} id="work">
       <Container>
         <Box mb={6}>
-          <SectionTitle variant="h2">My Development Portfolio</SectionTitle>
+          <SectionTitle variant="h2">My Repository</SectionTitle>
         </Box>
 
         <Grid container spacing={7}>

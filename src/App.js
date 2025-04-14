@@ -13,6 +13,7 @@ import Skills from './components/Skills';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import Experience from './components/Experience';
+import Certificates from './components/Certificates';
 
 console.log('Navbar:', Navbar);
 console.log('Hero:', Hero);
@@ -80,6 +81,7 @@ function App() {
         <Experience/>
         <Skills />
         <Projects />
+        <Certificates/>
         <Contact />
         <Footer />
       </MainContainer>

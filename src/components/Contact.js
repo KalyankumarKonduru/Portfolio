@@ -6,7 +6,7 @@ import { Typography, Container, Button, Box } from '@mui/material';
 
 const StyledSection = styled.section`
   padding: 100px 0;
-  background-color: #0a192f;
+  background-color: white;
   min-height: 60vh;
   display: flex;
   align-items: center;
@@ -98,7 +98,7 @@ function Contact() {
           my best to get back to you!
         </Description>
         <StyledButton
-          href="mailto:kondk01@pfw.edu"
+          href="mailto:konduru.kalyan555@gmail.com"
           variant="outlined"
           size="large"
         >
