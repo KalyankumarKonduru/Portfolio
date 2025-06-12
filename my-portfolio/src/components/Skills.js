@@ -202,7 +202,6 @@ const GlowingText = styled.span`
 `;
 
 const programming = [
-  // ... your programming skills array
   { iconClass: 'fas fa-code', name: 'C/C++' },
   { iconClass: 'fab fa-java', name: 'Java' },
   { iconClass: 'fab fa-js', name: 'JavaScript' },
@@ -219,7 +218,6 @@ const programming = [
 ];
 
 const databases = [
-  // ... your databases skills array
   { iconClass: 'fas fa-database', name: 'MySQL' },
   { iconClass: 'fas fa-server', name: 'PostgreSQL' },
   { iconClass: 'fas fa-leaf', name: 'MongoDB' },
@@ -230,7 +228,6 @@ const databases = [
 ];
 
 const frameworks = [
-  // ... your frameworks skills array
   { iconClass: 'fab fa-cloud', name: 'Spring Boot' },
   { iconClass: 'fas fa-archive', name: 'Apache Maven' },
   { iconClass: 'fab fa-aws', name: 'AWS' },
@@ -248,7 +245,6 @@ const frameworks = [
 
 function Skills() {
   const theme = useContext(ThemeContext);
-  const [isPaused, setIsPaused] = useState(false);
   
   // Section heading animation
   const [titleRef, titleInView] = useInView({
@@ -272,27 +268,28 @@ function Skills() {
     triggerOnce: true,
   });
 
+  // Track whether any icon is being hovered
+  const [hoveredTrack, setHoveredTrack] = useState(null);
+
   // Improved marquee effect with pause functionality
-  const renderSkillRow = (skills, direction) => {
+  const renderSkillRow = (skills, direction, trackId) => {
     // Create a clone of all items to ensure the marquee is continuous
     const totalSkills = [...skills, ...skills, ...skills];
     
     return (
-      <SkillsRowWrapper 
-        theme={theme}
-        onMouseEnter={() => setIsPaused(true)}
-        onMouseLeave={() => setIsPaused(false)}
-      >
+      <SkillsRowWrapper theme={theme}>
         <SkillsRow>
           <SkillsTrack 
             direction={direction} 
             theme={theme} 
-            isPaused={isPaused}
+            isPaused={hoveredTrack === trackId}
           >
             {totalSkills.map((skill, index) => (
               <IconWrapper 
                 key={`${skill.name}-${index}`} 
                 theme={theme}
+                onMouseEnter={() => setHoveredTrack(trackId)}
+                onMouseLeave={() => setHoveredTrack(null)}
               >
                 <i className={skill.iconClass}></i>
                 <span className="skill-name">{skill.name}</span>
@@ -323,7 +320,7 @@ function Skills() {
               Programming & Web Development
             </GlowingText>
           </CategoryTitle>
-          {renderSkillRow(programming, 'left')}
+          {renderSkillRow(programming, 'left', 'programming')}
         </CategorySection>
 
         <CategorySection>
@@ -335,7 +332,7 @@ function Skills() {
               Databases & Tools
             </GlowingText>
           </CategoryTitle>
-          {renderSkillRow(databases, 'right')}
+          {renderSkillRow(databases, 'right', 'databases')}
         </CategorySection>
 
         <CategorySection>
@@ -347,7 +344,7 @@ function Skills() {
               Frameworks, Cloud & Methodologies
             </GlowingText>
           </CategoryTitle>
-          {renderSkillRow(frameworks, 'left')}
+          {renderSkillRow(frameworks, 'left', 'frameworks')}
         </CategorySection>
       </Container>
     </StyledSection>

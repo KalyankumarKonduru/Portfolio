@@ -15,7 +15,7 @@ const SectionTitle = styled.h2`
   color: ${props => props.theme.colors.accent};
   font-size: clamp(26px, 5vw, 32px);
   font-weight: 600;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   text-align: center;
   position: relative;
   
@@ -32,169 +32,207 @@ const SectionTitle = styled.h2`
   }
 `;
 
+// Main container for the timeline
 const TimelineContainer = styled.div`
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
-  padding: 20px 0;
+  padding-bottom: 100px;
 `;
 
-// Timeline vertical line
-const TimelineLine = styled.div`
+// The fixed vertical line
+const FixedLine = styled.div`
   position: absolute;
-  top: 0;
+  top: -60px; // Start above the title
   bottom: 0;
   left: 50%;
   width: 2px;
-  background-color: ${props => props.theme.isDarkMode ? 'rgba(237, 109, 11, 0.3)' : 'rgba(237, 109, 11, 0.2)'};
-  transform: translateX(-50%);
-  z-index: 1;
-`;
-
-// Active timeline line that grows as user scrolls
-const ActiveLine = styled.div`
-  position: absolute;
-  top: 0;
-  left: 50%;
-  width: 2px;
-  height: ${props => props.progress + '%'};
   background-color: ${props => props.theme.colors.accent};
   transform: translateX(-50%);
-  transition: height 0.2s linear;
+  z-index: 1;
+  opacity: 0.2;
+`;
+
+// The growing progress line that animates as user scrolls
+const ProgressLine = styled.div`
+  position: absolute;
+  top: -60px; // Same offset as fixed line
+  left: 50%;
+  width: 2px;
+  height: ${props => props.progress}px;
+  background-color: ${props => props.theme.colors.accent};
+  transform: translateX(-50%);
   z-index: 2;
+  transition: height 0.1s linear;
+`;
+
+// NEW: Scrolling pointer that follows the end of the progress line
+const ScrollPointer = styled.div`
+  position: absolute;
+  top: ${props => props.progress - 60}px; // Position at end of progress line
+  left: 50%;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: ${props => props.theme.colors.accent};
+  transform: translateX(-50%);
+  z-index: 3;
+  transition: top 0.1s linear;
+  opacity: ${props => props.hidden ? 0 : 1};
+  
+  /* Add a subtle glow effect */
+  box-shadow: 0 0 10px ${props => props.theme.colors.accent};
 `;
 
 // Timeline item container
 const TimelineItem = styled.div`
   display: flex;
-  justify-content: ${props => props.position === 'left' ? 'flex-end' : 'flex-start'};
-  padding-right: ${props => props.position === 'left' ? '50px' : '0'};
-  padding-left: ${props => props.position === 'right' ? '50px' : '0'};
-  margin-bottom: 80px;
+  margin-bottom: 100px;
   position: relative;
-  width: 50%;
-  margin-left: ${props => props.position === 'right' ? '50%' : '0'};
+  
+  &:nth-child(odd) {
+    padding-right: 50%;
+    justify-content: flex-end;
+    
+    .content {
+      margin-right: 50px;
+      text-align: right;
+      border-right: 4px solid ${props => props.active ? props.theme.colors.accent : 'transparent'};
+      transition: border-right-color 0.3s ease;
+    }
+    
+    .year {
+      right: auto;
+      left: calc(50% + 20px);
+    }
+  }
+  
+  &:nth-child(even) {
+    padding-left: 50%;
+    justify-content: flex-start;
+    
+    .content {
+      margin-left: 50px;
+      text-align: left;
+      border-left: 4px solid ${props => props.active ? props.theme.colors.accent : 'transparent'};
+      transition: border-left-color 0.3s ease;
+    }
+    
+    .year {
+      left: auto;
+      right: calc(50% + 20px);
+    }
+  }
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
-// Dot in the middle of the timeline
+// The checkpoint dot on the timeline with blinking effect when active
 const TimelineDot = styled.div`
   position: absolute;
-  top: 20px;
-  left: ${props => props.position === 'left' ? 'calc(100% + 8px)' : '-8px'};
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background-color: ${props => props.active ? props.theme.colors.accent : props.theme.isDarkMode ? 'rgba(237, 109, 11, 0.3)' : 'rgba(237, 109, 11, 0.2)'};
-  z-index: 3;
-  transform: ${props => props.active ? 'scale(1.5)' : 'scale(1)'};
-  transition: all 0.3s ease;
-`;
-
-// Blip effect that appears on the active dot
-const BlipEffect = styled.div`
-  position: absolute;
-  top: 50%;
+  top: 25px;
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
-  background-color: ${props => props.theme.colors.accent};
-  opacity: ${props => props.active ? 1 : 0};
-  z-index: 3;
+  background-color: ${props => props.passed ? props.theme.colors.accent : props.theme.isDarkMode ? props.theme.colors.background : '#fff'};
+  border: 2px solid ${props => props.theme.colors.accent};
+  transform: translateX(-50%);
+  z-index: ${props => props.passed ? 1 : 3};
+  transition: background-color 0.3s ease, z-index 0.1s;
   
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background-color: transparent;
-    border: 2px solid ${props => props.theme.colors.accent};
-  }
-  
-  &::before {
-    width: 200%;
-    height: 200%;
-    opacity: ${props => props.active ? 0.7 : 0};
-    animation: ${props => props.active ? 'blip 1.5s infinite' : 'none'};
-  }
-  
-  &::after {
-    width: 300%;
-    height: 300%;
-    opacity: ${props => props.active ? 0.5 : 0};
-    animation: ${props => props.active ? 'blip 1.5s 0.3s infinite' : 'none'};
-  }
-  
-  @keyframes blip {
-    0% {
-      transform: translate(-50%, -50%) scale(0.5);
-      opacity: 0.8;
+  /* Radar blinking effect only when this is the active dot AND it's being touched by the pointer */
+  ${props => props.active && !props.passed && props.touching ? `
+    &::before, &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 50%;
+      background-color: transparent;
+      border: 2px solid ${props.theme.colors.accent};
+      animation: radarPulse 2s infinite;
     }
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-      opacity: 0;
+    
+    &::before {
+      width: 30px;
+      height: 30px;
+      animation-delay: 0s;
     }
-  }
+    
+    &::after {
+      width: 45px;
+      height: 45px;
+      animation-delay: 0.5s;
+    }
+    
+    @keyframes radarPulse {
+      0% {
+        transform: translate(-50%, -50%) scale(0.5);
+        opacity: 1;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(1.5);
+        opacity: 0;
+      }
+    }
+  ` : ''}
 `;
 
 // Year badge
 const YearBadge = styled.div`
   position: absolute;
   top: 20px;
-  ${props => props.position === 'left' ? 'right: -90px;' : 'left: -90px;'}
   background-color: ${props => props.theme.colors.accent};
-  color: #fff;
-  padding: 4px 12px;
+  color: white;
+  padding: 5px 15px;
   border-radius: 20px;
-  font-size: 14px;
   font-weight: 500;
-  z-index: 3;
+  z-index: 4;
 `;
 
 // Content card
-const TimelineCard = styled.div`
-  background-color: ${props => props.theme.isDarkMode ? '#112240' : '#ffffff'};
-  border-radius: 8px;
-  padding: 25px;
+const ContentCard = styled.div`
   width: 100%;
   max-width: 450px;
+  background-color: ${props => props.theme.isDarkMode ? '#112240' : 'white'};
+  border-radius: 8px;
+  padding: 30px;
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
-  transform: ${props => props.active ? 'translateY(-5px) scale(1.02)' : 'none'};
-  opacity: ${props => props.active ? 1 : 0.9};
-  border-left: ${props => props.position === 'right' && props.active ? `4px solid ${props.theme.colors.accent}` : 'none'};
-  border-right: ${props => props.position === 'left' && props.active ? `4px solid ${props.theme.colors.accent}` : 'none'};
-  text-align: ${props => props.position === 'left' ? 'right' : 'left'};
+  transform: ${props => props.active ? 'translateY(-5px)' : 'none'};
+  opacity: ${props => props.active ? 1 : 0.7};
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
 `;
 
 const Role = styled.h3`
-  color: ${props => props.theme.isDarkMode ? '#ccd6f6' : '#333333'};
+  color: ${props => props.theme.colors.text};
   margin: 0 0 5px 0;
   font-size: 24px;
   font-weight: 600;
-  transition: color 0.3s ease;
 `;
 
 const Company = styled.h4`
   color: ${props => props.theme.colors.accent};
   margin: 0 0 15px 0;
   font-size: 18px;
-  font-weight: 500;
-  transition: color 0.3s ease;
 `;
 
 const Description = styled.p`
-  color: ${props => props.theme.isDarkMode ? '#8892b0' : '#555555'};
+  color: ${props => props.theme.colors.secondaryText};
   font-size: 16px;
   line-height: 1.6;
   margin: 0;
-  transition: color 0.3s ease;
 `;
 
-// Array of experience items
+// Experience items data
 const experienceItems = [
   {
     role: "Bachelor's",
@@ -224,100 +262,184 @@ const experienceItems = [
 
 function Experience() {
   const theme = useContext(ThemeContext);
+  const sectionRef = useRef(null);
   const timelineRef = useRef(null);
   const [progress, setProgress] = useState(0);
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(-1);
   
-  // Track scroll progress to animate timeline
+  // Store dot positions for precise alignment
+  const [dotPositions, setDotPositions] = useState([]);
+  
+  // NEW: Track which dot the pointer is touching
+  const [touchingDotIndex, setTouchingDotIndex] = useState(-1);
+  
+  // NEW: Track if pointer should be hidden after touching a dot
+  const [hidePointer, setHidePointer] = useState(false);
+  
+  // Measure dot positions on mount and window resize
   useEffect(() => {
-    const handleScroll = () => {
+    const measureDotPositions = () => {
       if (!timelineRef.current) return;
       
+      const dots = timelineRef.current.querySelectorAll('.timeline-dot');
+      const positions = Array.from(dots).map(dot => {
+        const rect = dot.getBoundingClientRect();
+        const timelineRect = timelineRef.current.getBoundingClientRect();
+        return rect.top - timelineRect.top + rect.height/2;
+      });
+      
+      setDotPositions(positions);
+    };
+    
+    // Initial measurement after DOM is ready
+    setTimeout(measureDotPositions, 500);
+    
+    // Remeasure on window resize
+    window.addEventListener('resize', measureDotPositions);
+    return () => window.removeEventListener('resize', measureDotPositions);
+  }, []);
+  
+  // Handle scroll to track progress and active item
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current || !timelineRef.current) return;
+      
+      const sectionRect = sectionRef.current.getBoundingClientRect();
       const timelineRect = timelineRef.current.getBoundingClientRect();
-      const timelineTop = timelineRect.top;
-      const timelineHeight = timelineRect.height;
       const viewportHeight = window.innerHeight;
       
-      // Calculate progress percentage for line growth
-      if (timelineTop > viewportHeight) {
-        // Timeline is below viewport
+      // Calculate visible height of the timeline (in pixels)
+      const timelineTop = Math.max(0, timelineRect.top);
+      const visibleHeight = Math.min(viewportHeight, timelineRect.bottom) - timelineTop;
+      
+      // Calculate progress based on section's position
+      if (sectionRect.top >= viewportHeight) {
+        // Section is completely below viewport
         setProgress(0);
-      } else if (timelineTop + timelineHeight < 0) {
-        // Timeline is above viewport
-        setProgress(100);
+      } else if (sectionRect.bottom <= 0) {
+        // Section is completely above viewport
+        setProgress(timelineRect.height);
       } else {
-        // Timeline is partially visible
-        const scrollableHeight = timelineHeight - viewportHeight * 0.5;
-        const scrolled = Math.abs(timelineTop) + viewportHeight * 0.5;
-        const progressPercentage = (scrolled / scrollableHeight) * 100;
+        // Calculate how far we've scrolled into the timeline
+        const scrollProgress = Math.min(
+          timelineRect.height,
+          Math.max(0, viewportHeight - timelineRect.top)
+        );
         
-        setProgress(Math.min(100, Math.max(0, progressPercentage)));
+        setProgress(scrollProgress);
       }
       
-      // Find the active timeline item
-      const items = document.querySelectorAll('.timeline-dot');
-      let currentActiveIndex = 0;
+      // Determine active dot based on what's most visible
+      const items = document.querySelectorAll('.timeline-item');
+      let newActiveIndex = -1;
+      let bestVisibility = 0;
       
       items.forEach((item, index) => {
         const rect = item.getBoundingClientRect();
-        // If dot is in the middle of the screen, it's active
-        if (rect.top <= viewportHeight * 0.6 && rect.bottom >= viewportHeight * 0.4) {
-          currentActiveIndex = index;
+        const visibility = Math.min(viewportHeight, rect.bottom) - Math.max(0, rect.top);
+        
+        if (visibility > bestVisibility && visibility > 0) {
+          bestVisibility = visibility;
+          newActiveIndex = index;
         }
       });
       
-      setActiveIndex(currentActiveIndex);
+      setActiveIndex(newActiveIndex);
+      
+      // NEW: Check if pointer is touching any dot
+      const currentScrollProgress = progress; // Use the progress state instead of undefined scrollProgress
+      
+      dotPositions.forEach((position, index) => {
+        // Define "touching" as within 10px of the center of the dot
+        const pointerPosition = currentScrollProgress;
+        const isTouching = Math.abs(pointerPosition - position) < 10;
+        
+        if (isTouching && !isDotPassed(index)) {
+          setTouchingDotIndex(index);
+          
+          // Hide pointer after 2 seconds
+          if (!hidePointer) {
+            setTimeout(() => {
+              setHidePointer(true);
+            }, 2000);
+          }
+        }
+      });
+      
+      // NEW: Show pointer again when scrolling down and away from the touched dot
+      if (hidePointer) {
+        const touchedPosition = touchingDotIndex >= 0 ? dotPositions[touchingDotIndex] : 0;
+        if (currentScrollProgress - touchedPosition > 50) {
+          setHidePointer(false);
+          setTouchingDotIndex(-1);
+        }
+      }
     };
     
     window.addEventListener('scroll', handleScroll);
     handleScroll(); // Initial call
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
+  }, [dotPositions, hidePointer, touchingDotIndex]);
+  
+  // Determine if a dot is passed by the progress line
+  const isDotPassed = (index) => {
+    if (!dotPositions[index]) return false;
+    return progress >= dotPositions[index];
+  };
+  
   return (
-    <StyledSection id="experience" theme={theme}>
+    <StyledSection id="experience" ref={sectionRef} theme={theme}>
       <Container maxWidth="lg">
         <SectionTitle theme={theme}>MY CAREER & EXPERIENCE</SectionTitle>
         
         <TimelineContainer ref={timelineRef}>
-          <TimelineLine theme={theme} />
-          <ActiveLine progress={progress} theme={theme} />
+          <FixedLine theme={theme} />
+          <ProgressLine progress={progress} theme={theme} />
+          
+          {/* NEW: Add the scrolling pointer */}
+          <ScrollPointer 
+            progress={progress} 
+            theme={theme} 
+            hidden={hidePointer}
+          />
           
           {experienceItems.map((item, index) => {
-            const position = index % 2 === 0 ? 'right' : 'left';
             const isActive = index === activeIndex;
+            const isPassed = isDotPassed(index);
+            const isTouching = index === touchingDotIndex;
             
             return (
-              <TimelineItem 
-                key={index} 
-                position={position}
+              <TimelineItem
+                key={index}
+                className="timeline-item"
+                theme={theme}
+                active={isActive}
               >
-                <TimelineDot 
-                  position={position} 
-                  theme={theme} 
-                  active={isActive}
-                  className="timeline-dot"
-                >
-                  <BlipEffect theme={theme} active={isActive} />
-                </TimelineDot>
-                
-                <YearBadge 
-                  position={position} 
+                <YearBadge
                   theme={theme}
+                  className="year"
                 >
                   {item.year}
                 </YearBadge>
                 
-                <TimelineCard 
+                <TimelineDot 
                   theme={theme} 
+                  active={isActive} 
+                  passed={isPassed}
+                  touching={isTouching} // NEW: Pass the touching state
+                  className="timeline-dot"
+                />
+                
+                <ContentCard
+                  className="content"
+                  theme={theme}
                   active={isActive}
-                  position={position}
                 >
                   <Role theme={theme}>{item.role}</Role>
                   <Company theme={theme}>{item.company}</Company>
                   <Description theme={theme}>{item.description}</Description>
-                </TimelineCard>
+                </ContentCard>
               </TimelineItem>
             );
           })}
