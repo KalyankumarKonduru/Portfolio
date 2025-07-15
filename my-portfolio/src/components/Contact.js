@@ -215,7 +215,7 @@ function Contact() {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: index * 0.2 }}
           variants={floatingVariants}
-          animate="animate"
+          //animate="animate"
         />
       ))}
       
@@ -261,7 +261,7 @@ function Contact() {
             </Description>
             
             <StyledButton
-              href="mailto:konduru.kalyan555@gmail.com"
+              href="mailto:kondurukalyankumar.dev@gmail.com"
               theme={theme}
               variants={buttonVariants}
               whileHover="hover"

@@ -241,22 +241,22 @@ const experienceItems = [
     description: "Graduated with a Bachelor's in Computer Science, focusing on advanced software development and problem-solving."
   },
   {
-    role: "Associate Software Engineer",
+    role: "Software Developer",
     company: "Accenture",
     year: "2021",
     description: "Designed and developed SaaS applications using React, AngularJS, Node.js, MongoDB, and RESTful APIs. Applied Agile methodologies and test-driven development to enhance stability and reliability. Optimized APIs, restructured database models, and collaborated with DevOps to streamline CI/CD pipelines, ensuring seamless deployment while maintaining version control and efficient code management in Git."
-  },
-  {
-    role: "Software Engineer",
-    company: "Accenture",
-    year: "2021",
-    description: "Developed Java backend features based on Jira requirements, integrating Windchill and Polarion tools with regular sprint updates. Optimized cloud infrastructure by testing AWS servers and monitoring Lambda functions. Enhanced deployment efficiency through automation while ensuring accurate user permissions and seamless documentation updates."
   },
   {
     role: "Master's Student",
     company: "Purdue University",
     year: "2024",
     description: "Currently pursuing a Master's in Computer Science, specializing in advanced software development and problem-solving. Working on Python projects, applying algorithms, data structures, and AI techniques. Gaining hands-on experience with cloud computing, system design, and scalable application development."
+  },
+    {
+    role: "Software Developer Intern",
+    company: "Medical Informatics Engineering",
+    year: "2025",
+    description: "Developed a full-stack medical chatbot system using MCP architecture, integrating Epic FHIR APIs for secure patient data access and MongoDB Atlas for intelligent document retrieval. Implemented JWT-based authentication, leveraged MCP function calls, and generated semantic embeddings with Xenova Transformers for vector search. Ensured real-time, context-aware responses through scalable backend services tailored for healthcare applications."
   }
 ];
 

@@ -429,39 +429,39 @@ const projects = [
     description:
       'ORAMA is an AI-powered object detection and risk assessment system designed for low-visibility driving conditions like fog and rain, leveraging YOLOv8 and adaptive preprocessing to enhance safety. It delivers real-time visual alerts and collision risk analysis, targeting future SaaS deployment for autonomous vehicles.',
     tech: ['Python', 'Tensorflow', 'Jupyter', 'Yolov8', 'numpy'],
-    github: 'https://github.com/KalyankumarKonduru/Orama.git',
-    external: 'https://github.com/KalyankumarKonduru/Orama.git',
+    github: 'https://github.com/KalyankumarKonduru/Orama',
+    external: 'https://github.com/KalyankumarKonduru/Orama',
   },
   {
-    title: 'Twarita',
+    title: 'Epic MCP Server',
     description:
-      'TWARITA is an AI-powered vehicle safety system that combines object detection with real-time collision risk assessment and adaptive decision-making, using sensor data and advanced AI models to predict threats and trigger smart alerts or responses like automatic braking.',
-    tech: ['Python', 'Yolov8', 'TensorFlow', 'Ultralytics', 'Matplotlib'],
-    github: 'https://github.com/KalyankumarKonduru/twarita.git',
-    external: 'https://github.com/KalyankumarKonduru/twarita.git',
+      'A backend MCP server that integrates with the Epic FHIR API to create and retrieve patient data for a medical chatbot. It leverages MCP tool calling functions to enable secure and efficient communication with Epic systems, ensuring reliable and real-time healthcare responses.',
+    tech: ['Node.js', 'JWT', 'MCP SDK'],
+    github: 'https://github.com/KalyankumarKonduru/Epic-MCP',
+    external: 'https://github.com/KalyankumarKonduru/Epic-MCP',
   },
   {
-    title: 'ApparelAI',
+    title: 'MongoDB Atlas MCP server',
     description:
-      'A machine learning model that synthesizes realistic clothing images using Conditional GAN, targeting enhancements in fashion marketing with customizable backgrounds. It leverages Style GAN and cGANs, integrating datasets like Deep Fashion and Fashion-MNIST for high-realism in apparel-to-background synthesis.',
-    tech: ['Conditional GAN', 'StyleGAN', 'Python', 'Tensorflow', 'Jupyter'],
-    github: 'https://github.com/KalyankumarKonduru/ApparelAI.git',
-    external: 'https://github.com/KalyankumarKonduru/ApparelAI.git',
+      'A backend MCP server that parses medical documents, generates embeddings using Xenova Transformers, and stores them in MongoDB Atlas with vector search enabled. Designed to support intelligent querying and retrieval through MCP function calls, enabling fast, context-aware responses in a medical chatbot.',
+    tech: ['Xenova Transformers', 'Node.js', 'MCP SDK', 'MongoDB Atlas'],
+    github: 'https://github.com/KalyankumarKonduru/MCP-Server',
+    external: 'https://github.com/KalyankumarKonduru/MCP-Server',
   },
   {
-    title: 'Sentoro',
+    title: 'Medical Chatbot',
     description:
-      'A full stack application that connects users with domain experts through surveys. Features include engaging user interfaces that enhance data accuracy and comprehensive testing protocols documented in Jira to accelerate issue resolution.',
-    tech: ['Python', 'NoSQL', 'HTML', 'CSS'],
-    github: 'https://github.com/KalyankumarKonduru/Sentoro.git',
-    external: 'https://github.com/KalyankumarKonduru/Sentoro.git',
+      'A full stack medical chatbot application that connects users with multiple MCP servers to provide accurate, real-time health-related responses. Utilizes API integrations for intelligent conversations and personalized care.',
+    tech: ['MeteorJS', 'React', 'Node.js', 'MongoDB Atlas'],
+    github: 'https://github.com/KalyankumarKonduru/MCP',
+    external: 'https://github.com/KalyankumarKonduru/MCP',
   },
   {
     title: 'Alivio',
     description:
       'A full stack application that streamlines event management by offering scalable event planning and booking solutions. Features include secure user authentication with role-based access control and a responsive, cross-platform design.',
     tech: ['React', 'Node.js', 'Express', 'MongoDB'],
-    github: 'https://github.com/KalyankumarKonduru/Alivio.git',
+    github: 'https://github.com/KalyankumarKonduru/Alivio',
     external: 'https://alivio.onrender.com/',
   },
 ];
