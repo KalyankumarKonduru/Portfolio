@@ -181,7 +181,7 @@ const createParticles = (count) => {
 export default function Hero() {
   const typedEl = useRef(null);
   const [showArrow, setShowArrow] = useState(true);
-  const [scrollY, setScrollY] = useState(0);
+  const [isScrolled, setIsScrolled] = useState(false); // Boolean instead of scrollY
   const theme = useContext(ThemeContext);
   const [particles] = useState(() => createParticles(30)); // Create 30 particles
   
@@ -205,22 +205,34 @@ export default function Hero() {
     return () => typed.destroy();
   }, []);
 
-  // Update scroll position and control arrow visibility
+  // Update scroll position with throttling using requestAnimationFrame
   useEffect(() => {
+    let ticking = false;
+    
     const handleScroll = () => {
-      setScrollY(window.scrollY);
-      setShowArrow(window.scrollY <= 100);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollY = window.scrollY;
+          setShowArrow(scrollY <= 100);
+          setIsScrolled(scrollY > 100);
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
-    window.addEventListener('scroll', handleScroll);
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial call
+    
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Animate the Bitmoji image position & size based on scroll position using numeric values
+  // Animate the Bitmoji image position & size based on isScrolled state
   const bitmojiSpring = useSpring({
-    top: scrollY > 100 ? 10 : 150,      // numbers in px
-    left: scrollY > 100 ? 20 : initialLeft,
-    width: scrollY > 100 ? 50 : 150,
-    height: scrollY > 100 ? 50 : 150,
+    top: isScrolled ? 10 : 150,
+    left: isScrolled ? 20 : initialLeft,
+    width: isScrolled ? 50 : 150,
+    height: isScrolled ? 50 : 150,
     config: { tension: 200, friction: 30 },
   });
 

@@ -105,7 +105,6 @@ const SkillsRowWrapper = styled.div`
   }
 `;
 
-// Improved marquee container
 const SkillsRow = styled.div`
   position: relative;
   width: 100%;
@@ -113,7 +112,6 @@ const SkillsRow = styled.div`
   height: 100px;
 `;
 
-// Primary track with pause on hover functionality
 const SkillsTrack = styled.div`
   display: flex;
   position: absolute;
@@ -201,58 +199,54 @@ const GlowingText = styled.span`
   transition: color 0.5s ease, text-shadow 0.5s ease;
 `;
 
+// Updated skill arrays based on resume
 const programming = [
-  { iconClass: 'fas fa-code', name: 'C/C++' },
+  { iconClass: 'fab fa-python', name: 'Python' },
   { iconClass: 'fab fa-java', name: 'Java' },
   { iconClass: 'fab fa-js', name: 'JavaScript' },
+  { iconClass: 'fab fa-golang', name: 'Go' },
   { iconClass: 'fas fa-layer-group', name: 'TypeScript' },
-  { iconClass: 'fab fa-python', name: 'Python' },
-  { iconClass: 'fab fa-html5', name: 'HTML' },
-  { iconClass: 'fab fa-css3-alt', name: 'CSS' },
-  { iconClass: 'fab fa-angular', name: 'Angular' },
-  { iconClass: 'fab fa-react', name: 'React.js' },
+  { iconClass: 'fab fa-react', name: 'React' },
   { iconClass: 'fab fa-node-js', name: 'Node.js' },
-  { iconClass: 'fas fa-forward', name: 'Next.js' },
-  { iconClass: 'fab fa-figma', name: 'Figma' },
-  { iconClass: 'fas fa-icons', name: 'UI Design' },
+  { iconClass: 'fab fa-angular', name: 'Express.js' },
+  { iconClass: 'fab fa-python', name: 'FastAPI' },
+  { iconClass: 'fab fa-react', name: 'Redux' },
+  { iconClass: 'fab fa-java', name: 'Spring Boot' },
 ];
 
 const databases = [
-  { iconClass: 'fas fa-database', name: 'MySQL' },
   { iconClass: 'fas fa-server', name: 'PostgreSQL' },
   { iconClass: 'fas fa-leaf', name: 'MongoDB' },
-  { iconClass: 'fas fa-database', name: 'NoSQL' },
+  { iconClass: 'fas fa-database', name: 'Redis' },
+  { iconClass: 'fas fa-stream', name: 'Kafka' },
   { iconClass: 'fas fa-project-diagram', name: 'JIRA' },
   { iconClass: 'fas fa-book', name: 'Confluence' },
   { iconClass: 'fas fa-chart-bar', name: 'Power BI' },
 ];
 
-const frameworks = [
-  { iconClass: 'fab fa-cloud', name: 'Spring Boot' },
-  { iconClass: 'fas fa-archive', name: 'Apache Maven' },
+const cloudDevOps = [
   { iconClass: 'fab fa-aws', name: 'AWS' },
-  { iconClass: 'fas fa-cloud', name: 'Azure' },
-  { iconClass: 'fas fa-users-cog', name: 'Agile' },
-  { iconClass: 'fas fa-sync', name: 'CI/CD' },
   { iconClass: 'fab fa-docker', name: 'Docker' },
+  { iconClass: 'fas fa-dharmachakra', name: 'Kubernetes' },
+  { iconClass: 'fab fa-jenkins', name: 'Jenkins' },
+  { iconClass: 'fab fa-google', name: 'GKE' },
+  { iconClass: 'fas fa-ship', name: 'Helm' },
   { iconClass: 'fab fa-git-alt', name: 'Git' },
-  { iconClass: 'fas fa-brain', name: 'YOLOv8' },
-  { iconClass: 'fas fa-project-diagram', name: 'TensorFlow' },
-  { iconClass: 'fas fa-robot', name: 'Ultralytics' },
-  { iconClass: 'fas fa-chart-line', name: 'Matplotlib' },
-  { iconClass: 'fas fa-square-root-alt', name: 'NumPy' }
+  { iconClass: 'fas fa-fire', name: 'Prometheus' },
+  { iconClass: 'fas fa-chart-area', name: 'Grafana' },
+  { iconClass: 'fab fa-github', name: 'GitHub Actions' },
+  { iconClass: 'fas fa-lock', name: 'OAuth 2.0' },
+  { iconClass: 'fas fa-key', name: 'JWT' },
 ];
 
 function Skills() {
   const theme = useContext(ThemeContext);
   
-  // Section heading animation
   const [titleRef, titleInView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
   
-  // Category animations
   const [progRef, progInView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
@@ -263,17 +257,14 @@ function Skills() {
     triggerOnce: true,
   });
   
-  const [frameworkRef, frameworkInView] = useInView({
+  const [cloudRef, cloudInView] = useInView({
     threshold: 0.1,
     triggerOnce: true,
   });
 
-  // Track whether any icon is being hovered
   const [hoveredTrack, setHoveredTrack] = useState(null);
 
-  // Improved marquee effect with pause functionality
   const renderSkillRow = (skills, direction, trackId) => {
-    // Create a clone of all items to ensure the marquee is continuous
     const totalSkills = [...skills, ...skills, ...skills];
     
     return (
@@ -317,7 +308,7 @@ function Skills() {
             theme={theme} 
           >
             <GlowingText theme={theme}>
-              Programming & Web Development
+              Programming Languages & Frameworks
             </GlowingText>
           </CategoryTitle>
           {renderSkillRow(programming, 'left', 'programming')}
@@ -329,7 +320,7 @@ function Skills() {
             theme={theme}
           >
             <GlowingText theme={theme}>
-              Databases & Tools
+              Databases & Messaging
             </GlowingText>
           </CategoryTitle>
           {renderSkillRow(databases, 'right', 'databases')}
@@ -337,14 +328,14 @@ function Skills() {
 
         <CategorySection>
           <CategoryTitle 
-            ref={frameworkRef}
+            ref={cloudRef}
             theme={theme}
           >
             <GlowingText theme={theme}>
-              Frameworks, Cloud & Methodologies
+              Cloud, DevOps & Infrastructure
             </GlowingText>
           </CategoryTitle>
-          {renderSkillRow(frameworks, 'left', 'frameworks')}
+          {renderSkillRow(cloudDevOps, 'left', 'cloudDevOps')}
         </CategorySection>
       </Container>
     </StyledSection>

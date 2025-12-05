@@ -163,20 +163,32 @@ function Certificates() {
   ];
 
   // Certificate items
-  const certificates = [
-    {
-      title: 'Microsoft Certified: Power BI Data Analyst Associate',
-      description:
-        'Acquired proficiency in connecting and transforming data, implementing data models, and creating visualizations and dashboards to drive business decisions. Developed expertise in using DAX (Data Analysis Expressions) to create formulas and expressions for dynamic data analysis. ',
-      link: 'https://learn.microsoft.com/api/credentials/share/en-us/KalyankumarKonduru-6196/11B558E0617BEED4?sharingId=D70107F385967651',
-    },
-    {
-      title: 'Prompt Engineering',
-      description:
-        'Completed a specialization in prompt engineering for generative AI systems like ChatGPT, gaining expertise in writing effective prompts to enhance AI interaction, solving complex problems, and boosting productivity through hands-on practice and core competencies in AI utilization. ',
-      link: 'https://coursera.org/share/0ab813ee16a37df95ca4d2c46fd98e53',
-    },
-  ];
+const certificates = [
+  {
+    title: 'Oracle CCloud Infrastructure 2025 Certified Generative AI Professional',
+    description:
+      'Demonstrated expertise in generative AI technologies, including large language models, prompt engineering, and AI application development. Gained proficiency in Oracle Cloud Infrastructure AI services and best practices for deploying generative AI solutions in enterprise environments.',
+    link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=BAD8952A69032DA6E3726D34C0D328AB89EBCC3CDB64B24A37F19856BE2BB682', // Replace with your actual link
+  },
+  {
+    title: 'Oracle Cloud Infrastructure 2025 Certified Data Science Professional',
+    description:
+      'Validated advanced skills in data science methodologies, machine learning algorithms, and statistical analysis using Oracle Cloud Infrastructure. Demonstrated ability to build, train, and deploy machine learning models for predictive analytics and data-driven decision making.',
+    link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=ECCA01D3E291972B613B0B62FE6A627D2E9243A6572C438AD68CDCBDD804559F', // Replace with your actual link
+  },
+  {
+    title: 'Oracle Cloud Infrastructure 2025 Certified Developer Professional',
+    description:
+      'Earned advanced certification in designing, building, and deploying cloud-native applications on Oracle Cloud Infrastructure. Demonstrated expertise in OCI services, DevOps practices, containerization, serverless computing, and implementing scalable microservices architectures.',
+    link: 'https://catalog-education.oracle.com/ords/certview/sharebadge?id=A2473845013B4585AAD7947CBEDAA2ECF529C475E87E63F3DE46C92E9EE9CEDB', // Replace with your actual link
+  },
+  {
+    title: 'Microsoft Certified: Power BI Data Analyst Associate',
+    description:
+      'Acquired proficiency in connecting and transforming data, implementing data models, and creating visualizations and dashboards to drive business decisions. Developed expertise in using DAX (Data Analysis Expressions) to create formulas and expressions for dynamic data analysis.',
+    link: 'https://learn.microsoft.com/api/credentials/share/en-us/KalyankumarKonduru-6196/11B558E0617BEED4?sharingId=D70107F385967651',
+  }
+];
 
   return (
     <StyledSection id="certificates" theme={theme}>

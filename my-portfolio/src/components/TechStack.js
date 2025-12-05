@@ -28,51 +28,84 @@ function TechStack() {
     >
       <h2>Tech Stack</h2>
 
-      {/* Marquee Row 1 (Left-to-Right) */}
+      {/* Marquee Row 1 (Left-to-Right) - Frontend & Core Languages */}
       <div className="techstack-marquee">
         <div className="techstack-inner">
+          <div className="tech-item">Python</div>
+          <div className="tech-item">Java</div>
+          <div className="tech-item">JavaScript</div>
+          <div className="tech-item">TypeScript</div>
+          <div className="tech-item">Go</div>
           <div className="tech-item">React</div>
           <div className="tech-item">Node.js</div>
-          <div className="tech-item">MongoDB</div>
-          <div className="tech-item">AWS</div>
-          <div className="tech-item">Docker</div>
-          <div className="tech-item">Git</div>
-          <div className="tech-item">Next.js</div>
-          <div className="tech-item">TensorFlow</div>
-          <div className="tech-item">Python</div>
+          <div className="tech-item">Spring Boot</div>
+          <div className="tech-item">FastAPI</div>
+          <div className="tech-item">Express.js</div>
+          <div className="tech-item">Redux</div>
           {/* Repeat items for continuous loop */}
+          <div className="tech-item">Python</div>
+          <div className="tech-item">Java</div>
+          <div className="tech-item">JavaScript</div>
+          <div className="tech-item">TypeScript</div>
+          <div className="tech-item">Go</div>
           <div className="tech-item">React</div>
           <div className="tech-item">Node.js</div>
-          <div className="tech-item">MongoDB</div>
-          <div className="tech-item">AWS</div>
-          <div className="tech-item">Docker</div>
-          <div className="tech-item">Git</div>
-          <div className="tech-item">Next.js</div>
-          <div className="tech-item">TensorFlow</div>
-          <div className="tech-item">Python</div>
+          <div className="tech-item">Spring Boot</div>
+          <div className="tech-item">FastAPI</div>
+          <div className="tech-item">Express.js</div>
+          <div className="tech-item">Redux</div>
         </div>
       </div>
 
-      {/* Marquee Row 2 (Right-to-Left) */}
+      {/* Marquee Row 2 (Right-to-Left) - Databases & Messaging */}
       <div className="techstack-marquee reverse">
         <div className="techstack-inner">
-          <div className="tech-item">HTML</div>
-          <div className="tech-item">CSS</div>
-          <div className="tech-item">JavaScript</div>
-          <div className="tech-item">Express</div>
-          <div className="tech-item">SQL</div>
-          <div className="tech-item">TypeScript</div>
-          <div className="tech-item">Jest</div>
-          <div className="tech-item">C++</div>
+          <div className="tech-item">PostgreSQL</div>
+          <div className="tech-item">MongoDB</div>
+          <div className="tech-item">Redis</div>
+          <div className="tech-item">Kafka</div>
+          <div className="tech-item">AWS</div>
+          <div className="tech-item">Docker</div>
+          <div className="tech-item">Kubernetes</div>
+          <div className="tech-item">GKE</div>
+          <div className="tech-item">Helm</div>
+          <div className="tech-item">Jenkins</div>
           {/* Repeat items for continuous loop */}
-          <div className="tech-item">HTML</div>
-          <div className="tech-item">CSS</div>
-          <div className="tech-item">JavaScript</div>
-          <div className="tech-item">Express</div>
-          <div className="tech-item">SQL</div>
-          <div className="tech-item">TypeScript</div>
+          <div className="tech-item">PostgreSQL</div>
+          <div className="tech-item">MongoDB</div>
+          <div className="tech-item">Redis</div>
+          <div className="tech-item">Kafka</div>
+          <div className="tech-item">AWS</div>
+          <div className="tech-item">Docker</div>
+          <div className="tech-item">Kubernetes</div>
+          <div className="tech-item">GKE</div>
+          <div className="tech-item">Helm</div>
+          <div className="tech-item">Jenkins</div>
+        </div>
+      </div>
+
+      {/* Marquee Row 3 (Left-to-Right) - DevOps & Monitoring */}
+      <div className="techstack-marquee">
+        <div className="techstack-inner">
+          <div className="tech-item">Prometheus</div>
+          <div className="tech-item">Grafana</div>
+          <div className="tech-item">Git</div>
+          <div className="tech-item">GitHub Actions</div>
           <div className="tech-item">Jest</div>
-          <div className="tech-item">C++</div>
+          <div className="tech-item">OAuth 2.0</div>
+          <div className="tech-item">JWT</div>
+          <div className="tech-item">FHIR</div>
+          <div className="tech-item">MCP</div>
+          {/* Repeat items for continuous loop */}
+          <div className="tech-item">Prometheus</div>
+          <div className="tech-item">Grafana</div>
+          <div className="tech-item">Git</div>
+          <div className="tech-item">GitHub Actions</div>
+          <div className="tech-item">Jest</div>
+          <div className="tech-item">OAuth 2.0</div>
+          <div className="tech-item">JWT</div>
+          <div className="tech-item">FHIR</div>
+          <div className="tech-item">MCP</div>
         </div>
       </div>
     </section>

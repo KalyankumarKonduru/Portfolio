@@ -21,6 +21,7 @@ import Experience from './components/Experience';
 import Certificates from './components/Certificates';
 import CustomCursor from './components/CustomCursor';
 import PageTransition from './components/PageTransition';
+import HorizontalScroll from './components/HorizontalScroll';
 
 // Animation Libraries
 import { AnimatePresence } from 'framer-motion';
@@ -221,6 +222,7 @@ const AppContent = () => {
                   <About />
                   <Experience/>
                   <Skills />
+                  
                   <Projects />
                   <Certificates/>
                   <Contact />

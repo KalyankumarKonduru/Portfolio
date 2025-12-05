@@ -241,11 +241,17 @@ const experienceItems = [
     description: "Graduated with a Bachelor's in Computer Science, focusing on advanced software development and problem-solving."
   },
   {
-    role: "Software Developer",
+  role: "Associate Software Engineer",
     company: "Accenture",
     year: "2021",
-    description: "Designed and developed SaaS applications using React, AngularJS, Node.js, MongoDB, and RESTful APIs. Applied Agile methodologies and test-driven development to enhance stability and reliability. Optimized APIs, restructured database models, and collaborated with DevOps to streamline CI/CD pipelines, ensuring seamless deployment while maintaining version control and efficient code management in Git."
-  },
+    description: "Developed e-commerce platform using React with Redux state management and virtual scrolling for performance. Built Node.js RESTful APIs with JWT authentication and payment integration, configured MongoDB with optimized indexes, and automated testing with Jest and GitHub Actions."
+},
+  {
+    role: "Software Engineer",
+    company: "Accenture",
+    year: "2022",
+    description: "Built Spring Boot microservices with Kafka, Redis, and PostgreSQL on AWS EC2. Developed FastAPI services with async processing and optimized database performance with HikariCP and materialized views. Configured AWS auto-scaling infrastructure with CloudWatch monitoring, implemented OAuth 2.0/JWT security with RBAC, and mentored team on microservices best practices."
+},
   {
     role: "Master's Student",
     company: "Purdue University",
@@ -253,11 +259,11 @@ const experienceItems = [
     description: "Currently pursuing a Master's in Computer Science, specializing in advanced software development and problem-solving. Working on Python projects, applying algorithms, data structures, and AI techniques. Gaining hands-on experience with cloud computing, system design, and scalable application development."
   },
     {
-    role: "Software Developer Intern",
+    role: "Software Engineer Intern",
     company: "Medical Informatics Engineering",
     year: "2025",
-    description: "Developed a full-stack medical chatbot system using MCP architecture, integrating Epic FHIR APIs for secure patient data access and MongoDB Atlas for intelligent document retrieval. Implemented JWT-based authentication, leveraged MCP function calls, and generated semantic embeddings with Xenova Transformers for vector search. Ensured real-time, context-aware responses through scalable backend services tailored for healthcare applications."
-  }
+    description: "Developed MCP-based healthcare chatbot in TypeScript integrating Epic EHR and Aidbox FHIR APIs with ClinicalBERT-powered query routing. Built Kubernetes autoscaler in Go using Prometheus metrics, deployed microservices to GKE with Docker and Helm, and created Grafana dashboards for real-time monitoring of deployment health and performance."
+}
 ];
 
 function Experience() {
